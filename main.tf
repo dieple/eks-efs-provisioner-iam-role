@@ -41,7 +41,10 @@ module "eks_efs_provisioner_iam_role" {
   name        = "${var.name}"
   tags        = "${var.tags}"
 
-  principals_arns = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${var.role_name}"]
+  principals_services_arns = "${var.principals_services_arns}"
+  principals_arns          = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${var.role_name}"]
+  role_description         = "${var.role_description}"
+  policy_description       = "${var.policy_description}"
 
   policy_documents = [
     "${data.aws_iam_policy_document.ec2.json}",

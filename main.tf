@@ -34,12 +34,12 @@ data "aws_iam_policy_document" "efs" {
 module "eks_efs_provisioner_iam_role" {
   source = "git::https://github.com/cloudposse/terraform-aws-iam-role.git?ref=tags/0.2.1"
 
-  attrributes = "${var.attributes}"
-  enabled     = "${var.enabled}"
-  namespace   = "${var.namespace}"
-  stage       = "${var.stage}"
-  name        = "${var.name}"
-  tags        = "${var.tags}"
+  attributes = "${var.attributes}"
+  enabled    = "${var.enabled}"
+  namespace  = "${var.namespace}"
+  stage      = "${var.stage}"
+  name       = "${var.name}"
+  tags       = "${var.tags}"
 
   principals_services_arns = "${var.principals_services_arns}"
   principals_arns          = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${var.role_name}"]
